@@ -21,7 +21,15 @@
 <body>
     <canvas id="jogo" width="700" height="280"></canvas>
 
-    </script>
+    <script>
+        let canvasEl = document.querySelector('#jogo');
+        let ctx = canvasEl.getContext('2d');
+
+        let imageSprite = new Image();
+        imageSprite.src = 'megaman.png';
+        imageSprite.onload = () => {
+            ctx.drawImage(imageSprite, 50, 50);
+        };
     </script>
 </body>
 
