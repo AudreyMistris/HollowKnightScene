@@ -6,8 +6,8 @@
     <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aula de Canvas">
-    <title>Aprendendo Canvas</title>
+    <meta name="description" content="Teste de Sprites">
+    <title>Teste com Megaman</title>
 
     <style>
         /* Desenhar limites do canva */
@@ -16,6 +16,7 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
+            image-rendering: pixelated;
         }
     </style>
 </head>
@@ -29,9 +30,14 @@
 
         let imageSprite = new Image();
         imageSprite.src = 'megaman.png';
-        imageSprite.onload = () => {
+        
+        /* imageSprite.onload = () => {
             ctx.drawImage(imageSprite, 50, 50);
-        };
+        }; */
+        
+        imageSprite.addEventListener('load', () => {
+            ctx.drawImage(imageSprite, 50, 50, 80, 90);
+        });
     </script>
 </body>
 
