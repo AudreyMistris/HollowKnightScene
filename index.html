@@ -45,13 +45,14 @@
         
         let x = 50;
         
-        imageSprite.addEventListener('load', () => {
-            ctx.drawImage(imageSprite, 50, 50, 80, 90);
+        imageSprite.addEventListener('load', (evento) => {
+            ctx.drawImage(imageSprite, x, 50, 80, 90);
         });
         
         canvasEl.addEventListener('mousemove', (evento) => {
             // alert('x = ' + evento.offsetX);
             x = evento.offsetX;
+            ctx.clearRect(0, 0, 700, 280);
             ctx.drawImage(imageSprite, x, 50, 80, 90);
         });
     </script>
