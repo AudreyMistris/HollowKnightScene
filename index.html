@@ -23,6 +23,14 @@
 
 <body>
     <canvas id="jogo" width="700" height="280"></canvas>
+    <button id="atirar">Atirar</button>
+
+    <script>
+        let botaoEl = document.querySelector('#atirar');
+        botaoEl.addEventListener('click', function(e) {
+            alert('Atirou na posição x = ' + e.offsetX + '!!!');
+        });
+    </script>
 
     <script>
         let canvasEl = document.querySelector('#jogo');
@@ -35,8 +43,15 @@
             ctx.drawImage(imageSprite, 50, 50);
         }; */
         
+        let x = 50;
+        
         imageSprite.addEventListener('load', () => {
             ctx.drawImage(imageSprite, 50, 50, 80, 90);
+        });
+        
+        canvasEl.addEventListener('mousemove', (evento) => {
+            // alert('x = ' + evento.offsetX);
+            x = evento.offsetX;
         });
     </script>
 </body>
