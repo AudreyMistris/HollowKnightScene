@@ -7,22 +7,23 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Cenário com sprites">
-    <title>Hollow Knight theme</title>
+    <title>Hollow Knight battle</title>
 
     <style>
         body {
             background-image: url(hollowknightroom.jpg);
-            background-size: cover;
+            background-size: 700px 394px;
             background-repeat: no-repeat;
-            background-position: center;
+            background-position: bottom center;
         }
         
         canvas {
-            border: 2px solid gray;
+            border: 1px solid gray;
             display: block;
             margin-left: auto;
             margin-right: auto;
             image-rendering: pixelated;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -30,16 +31,18 @@
 <body>
     <canvas id="jogo" width="700" height="280"></canvas>
     
-    <center><button id="atirar">Atirar</button></center>
+    <!--<center><button id="atirar">Atirar</button></center>
     <script>
         let botaoEl = document.querySelector('#atirar');
         botaoEl.addEventListener('click', function(e) {
             alert('Atirou na posição x = ' + e.offsetX + '!!!');
-            // Desenhar quadrado na posição atacada aqui
+            // Desenhar quadrado na posição atacada
         });
-    </script>
+    </script> -->
 
     <script>
+        document.body.style.backgroundColor = "black";
+        
         class Sprite {
             constructor(x, y, largura, altura, imagem) {
                 this.x = x;
@@ -72,7 +75,7 @@
         // let x = 50;
         // let y = 50;
         
-        let hollowKnight = new Sprite(50, 50, 120, 160, imageSprite);
+        let hollowKnight = new Sprite(50, 133, 120, 160, imageSprite);
         let inimigos = [];
 
         inimigos.push(new Sprite(450, 20, 119, 114, imageInimigo));
@@ -81,7 +84,7 @@
 
         
         imageSprite.addEventListener('load', (evento) => {
-            // ctx.drawImage(imageSprite, x, y, 80, 90);
+            // ctx.drawImage(imageSprite, x, y, 120, 160);
             desenhaJogo();
         });
         
@@ -90,8 +93,15 @@
             hollowKnight.x = evento.offsetX - hollowKnight.largura / 2;
             hollowKnight.y = evento.offsetY - hollowKnight.altura / 2;
             // ctx.clearRect(0, 0, 700, 280);
-            // ctx.drawImage(imageSprite, x, y, 80, 90);
+            // ctx.drawImage(imageSprite, x, y, 120, 160);
             desenhaJogo();
+        });
+        
+        canvasEl.addEventListener('click', (evento) => {
+            // alert('Atacou na posição x = ' + evento.offsetX + '!!!');
+            ctx.strokeStyle = 'red';
+            ctx.fillStyle = 'red';
+            ctx.fillRect(Math.random() * 700, Math.random() * 280, 10, 10);
         });
         
         function desenhaJogo() {
