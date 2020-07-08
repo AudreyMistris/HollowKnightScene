@@ -79,8 +79,8 @@
         
         canvasEl.addEventListener('mousemove', (evento) => {
             // alert('x = ' + evento.offsetX);
-            megaman.x = evento.offsetX;
-            megaman.y = evento.offsetY;
+            megaman.x = evento.offsetX - megaman.largura / 2;
+            megaman.y = evento.offsetY - megaman.altura / 2;
             // ctx.clearRect(0, 0, 700, 280);
             // ctx.drawImage(imageSprite, x, y, 80, 90);
             desenhaJogo();
@@ -90,8 +90,12 @@
             ctx.clearRect(0, 0, 700, 280);
             megaman.desenha(ctx);
 
-            for (let i = 0; i < inimigos.length; i++) {
+            /* for (let i = 0; i < inimigos.length; i++) {
                 inimigos[i].desenha(ctx);
+            } */
+            
+            for (let inimigo of inimigos) {
+                inimigo.desenha(ctx);
             }
         }
     </script>
