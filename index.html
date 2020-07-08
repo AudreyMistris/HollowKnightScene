@@ -6,12 +6,19 @@
     <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Teste de Sprites">
-    <title>Teste com Megaman</title>
+    <meta name="description" content="Cenário com sprites">
+    <title>Hollow Knight theme</title>
 
     <style>
+        body {
+            background-image: url(hollowknightroom.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
         canvas {
-            border: 1px solid red;
+            border: 2px solid gray;
             display: block;
             margin-left: auto;
             margin-right: auto;
@@ -22,14 +29,15 @@
 
 <body>
     <canvas id="jogo" width="700" height="280"></canvas>
-    <!-- <button id="atirar">Atirar</button>
-
+    
+    <center><button id="atirar">Atirar</button></center>
     <script>
         let botaoEl = document.querySelector('#atirar');
         botaoEl.addEventListener('click', function(e) {
             alert('Atirou na posição x = ' + e.offsetX + '!!!');
+            // Desenhar quadrado na posição atacada aqui
         });
-    </script> -->
+    </script>
 
     <script>
         class Sprite {
@@ -52,10 +60,10 @@
         let ctx = canvasEl.getContext('2d');
 
         let imageSprite = new Image();
-        imageSprite.src = 'megaman.png';
+        imageSprite.src = 'hollowk.png';
         
         let imageInimigo = new Image();
-        imageInimigo.src = 'ghost.png';
+        imageInimigo.src = 'hk3.png';
         
         /* imageSprite.onload = () => {
             ctx.drawImage(imageSprite, 50, 50);
@@ -64,12 +72,12 @@
         // let x = 50;
         // let y = 50;
         
-        let megaman = new Sprite(50, 50, 80, 90, imageSprite);
+        let hollowKnight = new Sprite(50, 50, 120, 160, imageSprite);
         let inimigos = [];
 
-        inimigos.push(new Sprite(500, 150, 48, 48, imageInimigo));
-        inimigos.push(new Sprite(600, 100, 48, 48, imageInimigo));
-        inimigos.push(new Sprite(600, 200, 48, 48, imageInimigo));
+        inimigos.push(new Sprite(450, 20, 119, 114, imageInimigo));
+        inimigos.push(new Sprite(500, 160, 119, 114, imageInimigo));
+        inimigos.push(new Sprite(570, 50, 119, 114, imageInimigo));
 
         
         imageSprite.addEventListener('load', (evento) => {
@@ -79,8 +87,8 @@
         
         canvasEl.addEventListener('mousemove', (evento) => {
             // alert('x = ' + evento.offsetX);
-            megaman.x = evento.offsetX - megaman.largura / 2;
-            megaman.y = evento.offsetY - megaman.altura / 2;
+            hollowKnight.x = evento.offsetX - hollowKnight.largura / 2;
+            hollowKnight.y = evento.offsetY - hollowKnight.altura / 2;
             // ctx.clearRect(0, 0, 700, 280);
             // ctx.drawImage(imageSprite, x, y, 80, 90);
             desenhaJogo();
@@ -88,7 +96,7 @@
         
         function desenhaJogo() {
             ctx.clearRect(0, 0, 700, 280);
-            megaman.desenha(ctx);
+            hollowKnight.desenha(ctx);
 
             /* for (let i = 0; i < inimigos.length; i++) {
                 inimigos[i].desenha(ctx);
