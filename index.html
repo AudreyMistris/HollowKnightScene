@@ -25,11 +25,22 @@
             image-rendering: pixelated;
             cursor: pointer;
         }
+        
+        .footer {
+            position: fixed;
+            text-align: center;
+            bottom: 0px;
+            width: 100%;
+            color: white;
+            font-weight: bold;
+            font-family:'Courier New', Courier, monospace;
+        }
     </style>
 </head>
 
 <body>
     <canvas id="jogo" width="700" height="280"></canvas>
+    <div class="footer">Instruções: Clicar no canvas para atacar.</div>
     
     <!--<center><button id="atirar">Atirar</button></center>
     <script>
