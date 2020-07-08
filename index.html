@@ -10,7 +10,6 @@
     <title>Teste com Megaman</title>
 
     <style>
-        /* Desenhar limites do canva */
         canvas {
             border: 1px solid red;
             display: block;
@@ -33,30 +32,68 @@
     </script> -->
 
     <script>
+        class Sprite {
+            constructor(x, y, largura, altura, imagem) {
+                this.x = x;
+                this.y = y;
+                this.largura = largura;
+                this.altura = altura;
+                this.imagem = imagem;
+            }
+
+            desenha(ctx) {
+                if (this.imagem) {
+                    ctx.drawImage(this.imagem, this.x, this.y, this.largura, this.altura);
+                }
+            }
+        }
+        
         let canvasEl = document.querySelector('#jogo');
         let ctx = canvasEl.getContext('2d');
 
         let imageSprite = new Image();
         imageSprite.src = 'megaman.png';
         
+        let imageInimigo = new Image();
+        imageInimigo.src = 'ghost.png';
+        
         /* imageSprite.onload = () => {
             ctx.drawImage(imageSprite, 50, 50);
         }; */
         
-        let x = 50;
-        let y = 50;
+        // let x = 50;
+        // let y = 50;
+        
+        let megaman = new Sprite(50, 50, 80, 90, imageSprite);
+        let inimigos = [];
+
+        inimigos.push(new Sprite(500, 150, 48, 48, imageInimigo));
+        inimigos.push(new Sprite(600, 100, 48, 48, imageInimigo));
+        inimigos.push(new Sprite(600, 200, 48, 48, imageInimigo));
+
         
         imageSprite.addEventListener('load', (evento) => {
-            ctx.drawImage(imageSprite, x, y, 80, 90);
+            // ctx.drawImage(imageSprite, x, y, 80, 90);
+            desenhaJogo();
         });
         
         canvasEl.addEventListener('mousemove', (evento) => {
             // alert('x = ' + evento.offsetX);
             x = evento.offsetX;
             y = evento.offsetY;
-            ctx.clearRect(0, 0, 700, 280);
-            ctx.drawImage(imageSprite, x, y, 80, 90);
+            // ctx.clearRect(0, 0, 700, 280);
+            // ctx.drawImage(imageSprite, x, y, 80, 90);
+            desenhaJogo();
         });
+        
+        function desenhaJogo() {
+            ctx.clearRect(0, 0, 700, 280);
+            megaman.desenha(ctx);
+
+            for (let i = 0; i < inimigos.length; i++) {
+                inimigos[i].desenha(ctx);
+            }
+        }
     </script>
 </body>
 
